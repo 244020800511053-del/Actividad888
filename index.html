@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestión de Productos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brandIcon" aria-hidden="true"><i class="fa-solid fa-box-open"></i></span>
+          <div>
+            <div class="brandTitle">Gestión de Productos</div>
+            <div class="brandSubtitle">Catálogo rápido y minimalista</div>
+          </div>
+        </div>
+
+        <div class="topStats" aria-live="polite">
+          <span class="pill"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span id="productCount">0</span> productos</span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <!-- Panel izquierdo: formulario -->
+        <section class="panel">
+          <form id="productForm" class="card formCard" novalidate>
+            <div class="cardHeader">
+              <h2 class="cardTitle">Registrar Producto</h2>
+              <p class="cardHint">Completa los campos para agregar a la vitrina.</p>
+            </div>
+
+            <div id="formError" class="formError" role="alert" hidden></div>
+
+            <div class="formGrid">
+              <label class="field">
+                <span class="fieldLabel">Nombre del producto</span>
+                <input id="productName" type="text" name="name" autocomplete="off" placeholder="Ej. Café molido" />
+              </label>
+
+              <label class="field">
+                <span class="fieldLabel">Detalle</span>
+                <textarea id="productDetail" name="detail" rows="4" placeholder="Describe el producto de forma breve..."></textarea>
+              </label>
+
+              <label class="field">
+                <span class="fieldLabel">Valor</span>
+                <input
+                  id="productPrice"
+                  type="text"
+                  name="price"
+                  inputmode="decimal"
+                  placeholder="0,00 €"
+                  aria-describedby="priceHelp"
+                />
+                <span id="priceHelp" class="fieldHelp">Se mostrará en formato moneda al salir del campo.</span>
+              </label>
+            </div>
+
+            <div class="formActions">
+              <button type="submit" class="btn btnPrimary">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                Agregar Producto
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Panel derecho: vitrina -->
+        <section class="panel">
+          <div class="card catalogCard">
+            <div class="cardHeader cardHeader--row">
+              <h2 class="cardTitle">Vitrina de productos</h2>
+              <span class="muted">Actualiza al instante</span>
+            </div>
+
+            <div id="emptyState" class="emptyState">
+              Tu catálogo está vacío
+            </div>
+
+            <div id="catalogGrid" class="catalogGrid" aria-live="polite"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
